@@ -1,0 +1,260 @@
+
+#Copyright (c) 2024  Cenk Sasmaztin <cenk@oxoonetworkscom>
+#All rights reserved.
+
+#Redistribution and use in source and binary forms, with or without
+#modification, are permitted provided that the following conditions
+#are met:
+#1. Redistributions of source code must retain the above copyright
+#notice, this list of conditions and the following disclaimer.
+#2. Redistributions in binary form must reproduce the above copyright
+#notice, this list of conditions and the following disclaimer in the
+#documentation and/or other materials provided with the distribution.
+
+#THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+#ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+#IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+#ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+#FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+#DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+#OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+#HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+#LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+#OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+#SUCH DAMAGE.
+
+created by Oxoo Networks LLC.
+Copyright (c) [2024] [Oxoo Networks LLC.]
+
+
+
+
+This guide explains how to use the Python applications prepared for Bandwidth Test and Latency & Jitter Test.
+
+1. Bandwidth Test
+
+Purpose
+Measure your network's upload (sent) and download (received) speeds.
+Use reverse mode to pull data from the target server (download test).
+Execution
+Follow these steps to perform a bandwidth test:
+
+Running the Code
+
+python3 bandwidth_test.py
+User Input
+
+When the program runs, it will ask for the following information:
+
+Destination IP/Hostname: The IP address or hostname of the target to test (e.g., 192.168.1.166).
+Reverse Mode: Type y to enable reverse mode (download test). Default is n.
+Results
+
+Real-Time Output:
+During the test, upload and download results are displayed in the terminal every second.
+Example:
+[14:23:15] Upload: 92.36 Mbps, Download: 87.12 Mbps
+[14:23:16] Upload: 93.10 Mbps, Download: 88.05 Mbps
+Log File:
+When the test is stopped (Ctrl+C), results are saved to a log file.
+File name: bandwidth_results_<timestamp>.log
+Sample content:
+Timestamp,Upload (Mbps),Download (Mbps)
+14:23:15,92.36,87.12
+14:23:16,93.10,88.05
+Graph:
+A graph of the bandwidth results is generated.
+File name: bandwidth_graph_<timestamp>.png
+The graph displays Upload and Download values over time.
+2. Latency and Jitter Test
+
+Purpose
+Measure your network's latency (delay) and jitter (variation in delay).
+Execution
+Follow these steps to perform a latency and jitter test:
+
+Running the Code
+
+python3 latency_test.py
+User Input
+
+When the program runs, it will ask for the following information:
+
+Destination IP/Hostname: The IP address or hostname of the target to test (e.g., 8.8.8.8).
+Results
+
+Real-Time Output:
+The latency and jitter values are displayed in the terminal for each ping attempt.
+Example:
+[14:23:15] Latency: 4.20 ms
+[14:23:16] Latency: 5.15 ms
+[14:23:17] Latency: 3.90 ms
+Log File:
+When the test is stopped (Ctrl+C), results are saved to a log file.
+File name: latency_results_<timestamp>.log
+Sample content:
+Timestamp,Latency (ms)
+14:23:15,4.20
+14:23:16,5.15
+14:23:17,3.90
+Graph:
+A graph of the latency results is generated.
+File name: latency_graph_<timestamp>.png
+The graph displays latency over time.
+3. Running Tests in Parallel
+
+Purpose
+Perform the bandwidth test and latency & jitter test simultaneously to analyze network performance under load.
+Method
+Open two separate terminals or sessions.
+In one terminal, run the bandwidth test:
+python3 bandwidth_test.py
+In the other terminal, run the latency test:
+python3 latency_test.py
+Interpreting Results
+Latency & Jitter values may be affected by the network load during the bandwidth test. This is useful for analyzing how your network behaves under heavy traffic.
+Notes and Tips
+
+Iperf3 Server:
+For the bandwidth test to work, you must run an iperf3 server on the target machine:
+iperf3 -s
+Logs and Graphs:
+Result files and graphs are created in the directory where the program is run.
+Files are saved with date and time in their names.
+Network Conditions:
+During high network load, jitter and latency values may fluctuate.
+Configuring QoS (Quality of Service) settings can help stabilize these values.
+Frequently Asked Questions (FAQ)
+Q: What does reverse mode do?
+A: Reverse mode allows the client to pull data from the target server, effectively testing the download speed.
+
+Q: Why does latency increase when both tests are running simultaneously?
+A: The bandwidth test generates high data traffic, which can impact latency and jitter values. This is expected and useful for testing network performance under load.
+
+Q: What happens if iperf3 is not installed on the target?
+A: The bandwidth test will not work. You need to install iperf3 on the target machine and run a server:
+
+sudo apt install iperf3
+iperf3 -s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bu rehber, Bandwidth Testi ve Latency & Jitter Testi için hazırlanan Python uygulamalarının nasıl kullanılacağını açıklamaktadır.
+
+1. Bandwidth Testi
+
+Amaç
+Ağınızda upload (sent) ve download (received) hızlarını ölçmek.
+Reverse mode ile hedef sunucudan veri çekme (download testi).
+Çalıştırma
+Aşağıdaki adımları izleyerek bandwidth testi yapabilirsiniz:
+
+Kodun Çalıştırılması
+
+python3 bandwidth_test.py
+Kullanıcıdan Alınan Girdi
+
+Program çalıştırıldığında, kullanıcıdan şu bilgiler istenir:
+
+Destination IP/Hostname: Test yapılacak hedef IP adresi veya hostname (ör. 192.168.1.166).
+Reverse Mode: Reverse mode (download testi) etkinleştirmek için y yazın. Varsayılan olarak n.
+Sonuçlar
+
+Gerçek Zamanlı Çıktı:
+Test süresince her saniye upload ve download sonuçları terminalde görüntülenir.
+Örnek:
+[14:23:15] Upload: 92.36 Mbps, Download: 87.12 Mbps
+[14:23:16] Upload: 93.10 Mbps, Download: 88.05 Mbps
+Log Dosyası:
+Test durdurulduğunda (Ctrl+C), sonuçlar bir log dosyasına kaydedilir.
+Dosya adı: bandwidth_results_<timestamp>.log
+Örnek içerik:
+Timestamp,Upload (Mbps),Download (Mbps)
+14:23:15,92.36,87.12
+14:23:16,93.10,88.05
+Grafik:
+Bandwidth sonuçlarının grafiği oluşturulur.
+Dosya adı: bandwidth_graph_<timestamp>.png
+Grafik, Upload ve Download değerlerini zaman ekseninde gösterir.
+2. Latency ve Jitter Testi
+
+Amaç
+Ağınızdaki gecikme süresi (latency) ve gecikme değişkenliği (jitter) değerlerini ölçmek.
+Çalıştırma
+Aşağıdaki adımları izleyerek latency & jitter testi yapabilirsiniz:
+
+Kodun Çalıştırılması
+
+python3 latency_test.py
+Kullanıcıdan Alınan Girdi
+
+Program çalıştırıldığında, kullanıcıdan şu bilgiler istenir:
+
+Destination IP/Hostname: Test yapılacak hedef IP adresi veya hostname (ör. 8.8.8.8).
+Sonuçlar
+
+Gerçek Zamanlı Çıktı:
+Her ping denemesi için gecikme süresi ve jitter değeri terminalde görüntülenir.
+Örnek:
+[14:23:15] Latency: 4.20 ms
+[14:23:16] Latency: 5.15 ms
+[14:23:17] Latency: 3.90 ms
+Log Dosyası:
+Test durdurulduğunda (Ctrl+C), sonuçlar bir log dosyasına kaydedilir.
+Dosya adı: latency_results_<timestamp>.log
+Örnek içerik:
+Timestamp,Latency (ms)
+14:23:15,4.20
+14:23:16,5.15
+14:23:17,3.90
+Grafik:
+Latency sonuçlarının grafiği oluşturulur.
+Dosya adı: latency_graph_<timestamp>.png
+Grafik, gecikme sürelerini zaman ekseninde gösterir.
+3. Paralel Çalıştırma
+
+Amaç
+Bandwidth testi ve latency testi aynı anda çalıştırılarak ağ performansını eş zamanlı olarak ölçmek.
+Yöntem
+İki ayrı terminal veya oturum açın.
+Bir terminalde bandwidth testi çalıştırın:
+python3 bandwidth_test.py
+Diğer terminalde latency testi çalıştırın:
+python3 latency_test.py
+Sonuçların Yorumu
+Latency & Jitter değerleri, bandwidth testi sırasında oluşan ağ yükünden etkilenebilir. Bu, ağınızın yoğun yük altındaki davranışını analiz etmek için kullanışlıdır.
+Notlar ve İpuçları
+
+Iperf3 Sunucusu:
+Bandwidth testinin çalışması için hedefte bir iperf3 sunucusu çalıştırmalısınız:
+iperf3 -s
+Log ve Grafikler:
+Sonuç dosyaları ve grafikler programın çalıştırıldığı dizinde oluşturulur.
+Dosyalar adlarına tarih ve saat bilgisi eklenerek kaydedilir.
+Ağ Koşulları:
+Ağ yoğunluğu yüksek olduğunda jitter ve latency değerlerinde dalgalanmalar görülebilir.
+QoS (Quality of Service) ayarları, bu değerlerin daha sabit tutulmasına yardımcı olabilir.
+Sıkça Sorulan Sorular (SSS)
+Soru: Reverse mode ne işe yarar?
+Cevap: Reverse mode, istemcinin hedef sunucudan veri çekmesini sağlar. Böylece download hızını test edebilirsiniz.
+
+Soru: İki test aynı anda çalıştığında neden latency artıyor?
+Cevap: Bandwidth testi, ağı yüksek miktarda veri trafiği ile doldurduğundan, latency ve jitter değerleri etkilenir. Bu, ağınızın yoğun yük altındaki performansını test etmek için beklenen bir durumdur.
+
+Soru: Hedefte iperf3 yüklü değilse ne olur?
+Cevap: Bandwidth testi çalışmaz. Hedef makinede iperf3 yükleyip bir sunucu çalıştırmanız gerekir:
+
+sudo apt install iperf3
+iperf3 -s

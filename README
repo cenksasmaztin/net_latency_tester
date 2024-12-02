@@ -31,6 +31,8 @@ Copyright (c) [2024] [Oxoo Networks LLC.]
 
 This guide explains how to use the Python applications prepared for Bandwidth Test and Latency & Jitter Test.
 
+
+
 1. Bandwidth Test
 
 Purpose
@@ -142,8 +144,7 @@ iperf3 -s
 Detailed Explanation
 Bandwidth Usage and Load:
 
-During a bandwidth test, especially one conducted with tools like iPerf3, the maximum possible data traffic is generated between the client and the target. 
-This creates a significant load on both the uplink and downlink sides of the network.
+During a bandwidth test, especially one conducted with tools like iPerf3, the maximum possible data traffic is generated between the client and the target. This creates a significant load on both the uplink and downlink sides of the network.
 
 If this traffic fully utilizes the available bandwidth, other critical network services (e.g., VoIP calls, video conferencing) may be affected by the heavy traffic load.
 Increase in Latency:
@@ -189,8 +190,7 @@ Replace FIFO with algorithms like WFQ (Weighted Fair Queuing), RED (Random Early
 If latency and jitter values are high during testing, work on QoS and queue management configurations.
 If ping results indicate high latency, review prioritization among traffic classes.
 Conclusion:
-An increase in latency during tests is a key indicator that an effective QoS mechanism and queue management algorithm are missing in the network. To resolve these issues, 
-the existing network configuration must be optimized.
+An increase in latency during tests is a key indicator that an effective QoS mechanism and queue management algorithm are missing in the network. To resolve these issues, the existing network configuration must be optimized.
 
 
 
@@ -323,8 +323,7 @@ Bandwidth testi sırasında gecikmenin artışı genellikle şunları gösterir:
 QoS Mekanizmalarının Eksikliği:
 Veri trafiğinin önceliklendirilmediği bir ağda, yüksek öncelikli trafik (ör. VoIP) bile yoğun yük nedeniyle gecikme yaşayabilir.
 Kuyruk Yönetim Algoritmalarının Eksikliği:
-Ağ cihazları üzerindeki paket kuyruklarının (queue) kötü yapılandırılması veya yetersiz algoritmalar (ör. FIFO - First In, First Out) nedeniyle, 
-yoğun trafik sırasında paketler sıraya alınır ve gecikmeler oluşur.
+Ağ cihazları üzerindeki paket kuyruklarının (queue) kötü yapılandırılması veya yetersiz algoritmalar (ör. FIFO - First In, First Out) nedeniyle, yoğun trafik sırasında paketler sıraya alınır ve gecikmeler oluşur.
 Doğru Yapılandırma Göstergeleri:
 Eğer ağda etkili bir QoS ve kuyruk yönetim algoritması uygulanmışsa:
 Gecikme artışı minimal olur.
@@ -355,5 +354,4 @@ Test Sonuçlarına Göre Ayarlamalar Yapın:
 Kod ile yapılan testler sırasında gecikme ve jitter değerleri yüksek çıkıyorsa, QoS ve kuyruk yönetimi üzerinde çalışın.
 Ping sonuçları yüksek gecikme gösteriyorsa, trafik sınıfları arasındaki önceliklendirmeyi gözden geçirin.
 Sonuç
-Testler sırasında gecikme seviyesinin artışı, ağ üzerinde etkin bir QoS mekanizması ve kuyruk yönetim algoritması olmadığını gösteren önemli bir işarettir. Bu problemleri çözmek için, 
-ağın mevcut yapılandırmasını optimize etmek gerekir.
+Testler sırasında gecikme seviyesinin artışı, ağ üzerinde etkin bir QoS mekanizması ve kuyruk yönetim algoritması olmadığını gösteren önemli bir işarettir. Bu problemleri çözmek için, ağın mevcut yapılandırmasını optimize etmek gerekir.

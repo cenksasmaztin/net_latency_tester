@@ -43,7 +43,7 @@ Follow these steps to perform a bandwidth test:
 
 Running the Code
 
-python3 bandwidth_test.py
+python3 net_bandwidth.py
 User Input
 
 When the program runs, it will ask for the following information:
@@ -77,7 +77,7 @@ Follow these steps to perform a latency and jitter test:
 
 Running the Code
 
-python3 latency_test.py
+python3 net_latency.py
 User Input
 
 When the program runs, it will ask for the following information:
@@ -215,7 +215,7 @@ Aşağıdaki adımları izleyerek bandwidth testi yapabilirsiniz:
 
 Kodun Çalıştırılması
 
-python3 bandwidth_test.py
+python3 net_bandwidth.py
 Kullanıcıdan Alınan Girdi
 
 Program çalıştırıldığında, kullanıcıdan şu bilgiler istenir:
@@ -249,7 +249,7 @@ Aşağıdaki adımları izleyerek latency & jitter testi yapabilirsiniz:
 
 Kodun Çalıştırılması
 
-python3 latency_test.py
+python3 net_latency.py
 Kullanıcıdan Alınan Girdi
 
 Program çalıştırıldığında, kullanıcıdan şu bilgiler istenir:
